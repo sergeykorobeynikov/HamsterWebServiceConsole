@@ -21,8 +21,8 @@ namespace HamsterWebServiceConsole
 
             var endpoint = new EndpointAddress("https://ol2.saas.rarus.ru/6ea59198/ws/hamster.1cws");
             var oneC = new XyloCode.OneC.hamsterPortTypeClient(binding, endpoint);
-            oneC.ClientCredentials.UserName.UserName = "Cnjkjdfz";
-            oneC.ClientCredentials.UserName.Password = "7555545";
+            oneC.ClientCredentials.UserName.UserName = "";
+            oneC.ClientCredentials.UserName.Password = "";
             oneC.Open();
 
             var orgs = oneC.GetOrganizations();
