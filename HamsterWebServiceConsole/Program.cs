@@ -36,6 +36,7 @@ namespace HamsterWebServiceConsole
             {
                 Console.WriteLine("{0}: {1} - {2} // {3}", employee.id, employee.Code, employee.Name, employee.Organization);
             }
+
             oneC.Close();
 
             Console.Beep();
