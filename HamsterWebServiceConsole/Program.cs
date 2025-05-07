@@ -6,11 +6,6 @@ namespace HamsterWebServiceConsole
     {
         static void Main(string[] args)
         {
-            Exec();
-        }
-
-        private static async void Exec()
-        {
             Console.WriteLine("Hello, World!");
 
             var binding = new BasicHttpBinding
@@ -25,22 +20,22 @@ namespace HamsterWebServiceConsole
             binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
             binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
 
-            var endpoint = new EndpointAddress("https://ol2.saas.rarus.ru/0/ws/hamster.1cws");
+            var endpoint = new EndpointAddress("https://ol2.saas.rarus.ru/6ea59198/ws/hamster.1cws");
             var oneC = new XyloCode.OneC.hamsterPortTypeClient(binding, endpoint);
             oneC.ClientCredentials.UserName.UserName = "";
             oneC.ClientCredentials.UserName.Password = "";
             oneC.Open();
 
-            var orgs = await oneC.GetOrganizationsAsync();
+            var orgs = oneC.GetOrganizations();
             foreach (var org in orgs)
             {
-                Console.WriteLine("{0}: {1} / {2} / {3}", org.id, org.Name, org.TaxNumber, org.StateRegistrationNumber);
+                Console.WriteLine("{0}: {1} (ИНН: {2}; ОГРН: {3})", org.id, org.Name, org.TaxNumber, org.StateRegistrationNumber);
             }
 
-            var staff = await oneC.GetEmployeesAsync();
+            var staff = oneC.GetEmployees();
             foreach (var employee in staff)
             {
-                Console.WriteLine("{1}: {2} / {0} // {3}", employee.id, employee.Code, employee.Name, employee.Organization);
+                Console.WriteLine("{0}: {1} - {2} // {3}", employee.id, employee.Code, employee.Name, employee.Organization);
             }
             oneC.Close();
 

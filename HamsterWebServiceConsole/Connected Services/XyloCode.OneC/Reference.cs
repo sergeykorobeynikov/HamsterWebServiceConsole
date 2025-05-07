@@ -182,7 +182,15 @@ namespace XyloCode.OneC
         
         [System.ServiceModel.OperationContractAttribute(Action="https://ol2.saas.rarus.ru/6ea59198/hamster#hamster:GetEmployees", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        XyloCode.OneC.Employes GetEmployees();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://ol2.saas.rarus.ru/6ea59198/hamster#hamster:GetEmployees", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<XyloCode.OneC.Employes> GetEmployeesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://ol2.saas.rarus.ru/6ea59198/hamster#hamster:GetOrganizations", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        XyloCode.OneC.Organizations GetOrganizations();
         
         [System.ServiceModel.OperationContractAttribute(Action="https://ol2.saas.rarus.ru/6ea59198/hamster#hamster:GetOrganizations", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -232,9 +240,19 @@ namespace XyloCode.OneC
         {
         }
         
+        public XyloCode.OneC.Employes GetEmployees()
+        {
+            return base.Channel.GetEmployees();
+        }
+        
         public System.Threading.Tasks.Task<XyloCode.OneC.Employes> GetEmployeesAsync()
         {
             return base.Channel.GetEmployeesAsync();
+        }
+        
+        public XyloCode.OneC.Organizations GetOrganizations()
+        {
+            return base.Channel.GetOrganizations();
         }
         
         public System.Threading.Tasks.Task<XyloCode.OneC.Organizations> GetOrganizationsAsync()
