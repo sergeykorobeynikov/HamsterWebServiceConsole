@@ -1,5 +1,4 @@
 ﻿using System.ServiceModel;
-using System.Threading.Tasks.Dataflow;
 
 namespace HamsterWebServiceConsole
 {
