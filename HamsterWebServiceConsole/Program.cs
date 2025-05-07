@@ -17,13 +17,12 @@ namespace HamsterWebServiceConsole
                 ReceiveTimeout = new TimeSpan(0, 0, 1, 0, 0),
             };
             binding.Security.Mode = BasicHttpSecurityMode.Transport;
-            binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
             binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
 
             var endpoint = new EndpointAddress("https://ol2.saas.rarus.ru/6ea59198/ws/hamster.1cws");
             var oneC = new XyloCode.OneC.hamsterPortTypeClient(binding, endpoint);
-            oneC.ClientCredentials.UserName.UserName = "";
-            oneC.ClientCredentials.UserName.Password = "";
+            oneC.ClientCredentials.UserName.UserName = "Cnjkjdfz";
+            oneC.ClientCredentials.UserName.Password = "7555545";
             oneC.Open();
 
             var orgs = oneC.GetOrganizations();
