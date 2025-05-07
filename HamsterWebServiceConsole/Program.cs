@@ -1,10 +1,16 @@
 ﻿using System.ServiceModel;
+using System.Threading.Tasks.Dataflow;
 
 namespace HamsterWebServiceConsole
 {
     internal class Program
     {
         static void Main(string[] args)
+        {
+            Exec();
+        }
+
+        private static async void Exec()
         {
             Console.WriteLine("Hello, World!");
 
@@ -26,13 +32,13 @@ namespace HamsterWebServiceConsole
             oneC.ClientCredentials.UserName.Password = "";
             oneC.Open();
 
-            var orgs = oneC.GetOrganizationsAsync().Result;
+            var orgs = await oneC.GetOrganizationsAsync();
             foreach (var org in orgs)
             {
                 Console.WriteLine("{0}: {1} / {2} / {3}", org.id, org.Name, org.TaxNumber, org.StateRegistrationNumber);
             }
 
-            var staff = oneC.GetEmployeesAsync().Result;
+            var staff = await oneC.GetEmployeesAsync();
             foreach (var employee in staff)
             {
                 Console.WriteLine("{1}: {2} / {0} // {3}", employee.id, employee.Code, employee.Name, employee.Organization);
